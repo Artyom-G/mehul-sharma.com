@@ -1,0 +1,26 @@
+.navbar{
+    width: 100%;
+    background-color: blue;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    button{
+        height: 50px;
+        width: 100px;
+        background-color: blue;
+        border: 2px white solid;
+
+        
+        span{
+            color:white;
+        }
+    }
+    
+    button:hover{
+        background-color: darkblue;
+    }
+}
