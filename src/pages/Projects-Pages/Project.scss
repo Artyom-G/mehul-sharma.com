@@ -1,114 +1,140 @@
+/* ═══════════════════════════════════════════════
+   PROJECTS PAGE  —  purple theme, fully responsive
+   ═══════════════════════════════════════════════ */
+
 .project {
-    background-color: black;//setting the background color
-    width: 100%;//we set the width to cover 100% of the screen
-    min-height: 100vh; // we set the height to be 100% of the view port
-    display: flex;//this ensures items size dynamically and relatively
-    flex-direction: column; //we want this to happen in a column style (vertically)
-    align-items: center; // this aligns the items to the center of the screen 
-    color: white; //this defines the color of the text
+    background-color: #060010;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
     font-family: "Jacques Francois", serif;
+    padding: 0 5%;
 
     .title {
-        margin-top: 15%;  //pushing down the title by 15% of the display
-        font-size: 50px;
-        margin-right: 45%;
-    } 
+        margin-top: 15%;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        align-self: flex-start;
+        margin-bottom: 0;
+    }
 
     .filter-buttons {
-        display: flex;//we set the buttons dynamically too
+        display: flex;
         flex-direction: row;
-        gap: 2vw;//gap between them
-        margin-bottom: 5vh; //adding space below
-        margin-right: 38.5%;//moving to left
+        flex-wrap: wrap;
+        gap: 2vw;
+        margin-bottom: 5vh;
+        align-self: flex-start;
 
         button {
-            font-size: 15px;
+            font-size: clamp(12px, 1.3vw, 15px);
             font-family: "Jacques Francois", serif;
-            color: rgb(255, 255, 255);
-            border: none;//getting rid of the border
+            color: #fff;
+            border: none;
             border-radius: 10px;
-            padding: 10px 30px;//size of button
-            cursor: pointer;//defining it as a pointable place
-            position: relative; //keeping the position of the buttons relative 
-            transition: transform 0.2s ease-in-out;//the pop up speed
-            background: 0.3s ease-in-out;//pop up speed for background
-            background: #100720; 
+            padding: 10px clamp(14px, 2vw, 30px);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+            background: #1A0A3C;
         }
 
         button:hover {
-            transform: scale(1.05);//scaling factor for hovering
-            background: linear-gradient(100deg, #00713a, #003e7c); // hover gradience
+            transform: scale(1.05);
+            background: linear-gradient(100deg, #6B21A8, #3B0764);
         }
 
-        button::before {//adding a before effect 
-            content: "";//adding a before and after click effect
+        button::before {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;//keeping it aligned with the buttons
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0, 235, 94, 0.4) 10%, rgba(255,255,255,0) 70%);
-            opacity: 0.2;//keeping the gradience there before click 
+            inset: 0;
+            background: radial-gradient(circle, rgba(192, 132, 252, 0.4) 10%, rgba(255,255,255,0) 70%);
+            opacity: 0.2;
             transition: opacity 1s ease-in-out;
         }
-        
-        // making the glow effect visible while hovering
+
         button:hover::before {
             opacity: 1;
         }
-        
     }
 
     .projects-grid {
-        margin-right: -12%;//alignment
-        display: grid;//using a grid display to map the projects
-        grid-template-columns: repeat(auto-fit, 350px); // Repeat pattern
-        gap: 20px;//gap between them
-        //row-gap: 20px;
-        width: 80%;//what percent of the screen they should span horizontally
-        margin-bottom: 20%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin-bottom: 15%;
+        align-self: flex-start;
     }
-    
+
     .project-box {
         position: relative;
-        background: #222;
+        background: #1A0A3C;
         border-radius: 20px;
-        overflow: hidden;//managing overflow
-        cursor: pointer;//pointer status
-        transition: transform 0.3s ease-in-out;
-        text-align: center;//putting the text in the center
-        //margin-bottom: 20%;//making sure there's space at the bottom
-        
-       aspect-ratop: 1/1;
-       overflow: hidden;//making boxes warp according to picture
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        aspect-ratio: 16 / 10;
 
         img {
-            width: 100%; //making the image fit 
-            height: 100%;//auto height based on display
-            object-fit: cover;//making the image a cover to the button
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
+
         &::before {
             content: "";
             position: absolute;
-            inset: 0; // shorthand for top, right, bottom, left: 0
-            background: rgba(0, 0, 0, 0); // black tint at 40% opacity
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
             transition: background 0.3s ease-in-out;
-            z-index: 1; // make sure it sits above the image but below text
+            z-index: 1;
         }
+
         .overlay {
-            position: absolute;//putting the overlay text on it
-            top: 50%;//centering it
+            position: absolute;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
-            font-size: 18px;
-            font-weight: bold;//setting for the text
+            color: #fff;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            font-weight: bold;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+            z-index: 2;
         }
     }
-    
+
     .project-box:hover {
-        opacity: 0.8;//making the box be lighter when hovered
-        transform: scale(1.05);//the scaling for touch
+        opacity: 0.82;
+        transform: scale(1.04);
+        box-shadow: 0 0 24px rgba(147, 51, 234, 0.35);
+    }
+}
+
+/* ════════════════════
+   MOBILE  ≤ 768px
+   ════════════════════ */
+@media (max-width: 768px) {
+    .project {
+        padding: 0 4%;
+
+        .title { margin-top: 12vh; }
+
+        .filter-buttons { gap: 0.6rem; }
+
+        .projects-grid {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .project .projects-grid {
+        grid-template-columns: 1fr;
     }
 }

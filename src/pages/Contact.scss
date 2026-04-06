@@ -1,91 +1,128 @@
-.contact {
+/* ═══════════════════════════════════════════════
+   CONTACT  —  purple theme, fully responsive
+   ═══════════════════════════════════════════════ */
 
+.contact {
     display: flex;
-    background: rgb(0, 0, 0);
-    width: 100%;
-    //min-height: 250vh;
-    align-items: top;
     justify-content: center;
-    color: white; 
-    font-size: 30px;
+    background: #060010;
+    width: 100%;
+    min-height: 100vh;
+    color: #fff;
     font-family: "Jacques Francois", serif;
-    
-    //position: absolute; 
+    padding: 0 5% 6%;
+}
+
+.contact-2 {
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contact-title {
-    color: rgb(255, 255, 255); 
-    font-size: 30px;
+    color: #fff;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
     font-family: "Jacques Francois", serif;
-    margin-top: 12%;
-    display: flex;
-    margin-left: 43%;
-    align-items: center;
-
+    margin-top: 12vh;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(192, 132, 252, 0.35);
 }
-
 
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    //gap: 3%;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.2rem;
 }
 
-
-.prompt { 
-    //margin-top: 5%;
-    margin: 1%;
-    font-size: 20px;
-    //align-items: right
+.prompt {
+    margin: 0.7rem 0 0.25rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
 }
 
 input, textarea {
-    width: 300px;
-    padding: 10px;
-    border: 2px solid #00e676;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 2px solid #9333EA;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    display: flex;
-    flex-direction: column; 
+    background: rgba(147, 51, 234, 0.07);
+    color: #fff;
+    font-family: "Jacques Francois", serif;
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
+    &:focus {
+        outline: none;
+        border-color: #C084FC;
+        box-shadow: 0 0 12px rgba(147, 51, 234, 0.35);
+    }
 
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+textarea {
+    resize: vertical;
+    min-height: 110px;
 }
 
 .send {
-    margin-top: 2%;
+    margin-top: 1.2rem;
     padding: 10px 20px;
     border: none;
     align-self: center;
-    width: 50%;
-    background: linear-gradient(to right, #00970A, #004010);
-    color: white;
+    width: clamp(110px, 35%, 160px);
+    background: linear-gradient(to right, #7C3AED, #4C1D95);
+    color: #fff;
+    font-family: "Jacques Francois", serif;
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
     border-radius: 10px;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
-    margin-bottom: 3%;
-    width: 10%;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+    margin-bottom: 2rem;
 }
 
 .send:hover {
-    background: linear-gradient(to right, #00B814, #005010);
-    transform: scale(1.05);
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    background: linear-gradient(to right, #9333EA, #6B21A8);
+    transform: scale(1.06);
+    box-shadow: 0 0 18px rgba(147, 51, 234, 0.45);
 }
 
 .pic {
-    cursor:pointer;
-    //position: absolute;
-    margin-left: 35%;
-    margin-bottom: 10%;
-    display: flex; 
+    cursor: pointer;
+    display: flex;
     flex-direction: row;
-    gap: 10%;
-    //height: 40%;
-    width: auto; 
-    height: 10%;
-   
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    img {
+        width: clamp(40px, 8vw, 56px);
+        height: clamp(40px, 8vw, 56px);
+        object-fit: cover;
+        border-radius: 8px;
+        border: 2px solid #9333EA;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 14px rgba(147, 51, 234, 0.5);
+        }
+    }
 }
 
-
+/* ════════════════
+   MOBILE  ≤ 480px
+   ════════════════ */
+@media (max-width: 480px) {
+    .contact { padding: 0 4% 5%; }
+    .contact-title { margin-top: 10vh; }
+}

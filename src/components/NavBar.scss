@@ -1,42 +1,132 @@
-.navbar{
+/* ═══════════════════════════════════════════════
+   NAVBAR  —  purple theme, responsive
+   ═══════════════════════════════════════════════ */
+
+.navbar {
     z-index: 1000;
-    //overflow: hidden; #00970A, #004010)
-    width: 40%;//width of the navbar from figma
-    background:linear-gradient(to right,#00970A, #004010);//making it gradient 
+    width: 40%;
+    background: linear-gradient(to right, #7C3AED, #4C1D95);
     height: 10%;
-    opacity: 85%;
+    min-height: 56px;
+    max-height: 76px;
+    opacity: 0.93;
     display: flex;
-    border-radius: 0 10px 10px 0; //rounding the edges
+    border-radius: 0 10px 10px 0;
     flex-direction: row;
-    justify-content: right;//even spacing between buttons
+    justify-content: right;
     align-items: center;
-    gap: 10%;//USE THIS GAP WHEN ADDING ANOTHER PAGE
-    padding: 0 40px; //adds pad to maintain spacing
+    gap: 10%;
+    padding: 0 40px;
     position: fixed;
-    top:5%; //matches y pos from sigma
-    margin-left: 50%; 
-    right: auto;//aligning it correctly
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10% 100%);//create an angled left edge
-    button{//the settings for the button and how it should operate
+    top: 5%;
+    margin-left: 50%;
+    right: auto;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10% 100%);
+
+    button {
         position: relative;
-        opacity: 100%;
+        opacity: 1;
         height: 50%;
         width: 15%;
         background: none;
         border: none;
         text-decoration: none;
-        cursor:pointer;
-        color:white;
+        cursor: pointer;
+        color: #fff;
         font-size: 150%;
         font-family: "Jacques Francois", serif;
-        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);//makes the navbar come up/dowm slowly
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        white-space: nowrap;
     }
-    
-    button:hover{//the settings for the button hover
+
+    button:hover {
         transform: translateY(-3px);
     }
 
     button:focus {
-        outline:none;//removes focus outline
+        outline: none;
     }
+}
+
+/* ── Hamburger button (hidden on desktop) ── */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 1100;
+    background: linear-gradient(to right, #7C3AED, #4C1D95);
+    border: none;
+    border-radius: 10px;
+    width: 46px;
+    height: 46px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 8px;
+    box-shadow: 0 0 16px rgba(124, 58, 237, 0.4);
+
+    span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform-origin: center;
+    }
+
+    &.open span:nth-child(1) { transform: translateY(7px) rotate(45deg);  }
+    &.open span:nth-child(2) { opacity: 0; transform: scaleX(0);          }
+    &.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+/* ── Full-screen mobile menu ── */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    background: rgba(6, 0, 16, 0.97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.8rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+
+    &.open {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: clamp(1.7rem, 6vw, 2.4rem);
+        font-family: "Jacques Francois", serif;
+        cursor: pointer;
+        transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
+
+        &:hover {
+            color: #C084FC;
+            transform: scale(1.08);
+            text-shadow: 0 0 20px rgba(192, 132, 252, 0.6);
+        }
+
+        &:focus { outline: none; }
+    }
+}
+
+/* ════════════════════
+   MOBILE  ≤ 768px
+   ════════════════════ */
+@media (max-width: 768px) {
+    .navbar      { display: none; }
+    .hamburger   { display: flex; }
+    .mobile-menu { display: flex; }
 }

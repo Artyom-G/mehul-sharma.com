@@ -1,106 +1,164 @@
+/* ═══════════════════════════════════════════════
+   INTERNSHIP PAGE  —  purple theme, fully responsive
+   ═══════════════════════════════════════════════ */
+
 .internship {
-    height: 150vh;
+    min-height: 100vh;
     width: 100%;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     align-items: center;
-    color: white; 
-    background: black;
+    color: #fff;
+    background: #060010;
     font-family: "Jacques Francois", serif;
-    .title {
-        margin-top: 10%;
-        margin-bottom: 5%;
-    }
-    .intern-layout {
-        margin-bottom: 10%;
-        //display: flex;
-        //display: grid;//using a grid display to map the projects
-        //grid-template-columns: repeat(auto-fit, 200px);
+    padding: 0 5% 6%;
 
+    .title {
+        margin-top: 10vh;
+        margin-bottom: 4%;
+        font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+        text-align: center;
+        text-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
     }
-    .internship-box {//the boxes settings
-        width: 1200px;  // Set a fixed width
-        height:150px; // Set a fixed height
-        border-radius: 20px; // Optional: rounded corners
-        //overflow: hidden; // Ensures image does not overflow
+
+    .intern-layout {
+        width: 100%;
+        max-width: 1100px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+    }
+
+    .internship-box {
+        width: 100%;
+        height: clamp(110px, 12vw, 160px);
+        border-radius: 20px;
+        overflow: hidden;
         cursor: pointer;
         position: relative;
-        transition: transform 0.3s ease-in-out;
-        margin-bottom: 3%;
-    
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+        background: #120830;
+
         img {
             border-radius: 10px 0 0 10px;
-            opacity: 1;
-            width: 20%;  // Image takes the full width of the box
-            height: 100%; // Image takes the full height of the box
-            object-fit: cover; // Ensures image covers the entire box without distortion
-        } 
+            width: clamp(90px, 18%, 190px);
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            float: left;
+        }
 
         .overlay {
-            position: absolute;//putting the overlay text on it
-            top: 40%;//centering it
-            left: 30%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 18px;
-            font-weight: bold;//setting for the text
+            position: absolute;
+            top: 50%;
+            left: clamp(100px, 21%, 210px);
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+            font-weight: bold;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-            border-radius: 20px;
-            
+            padding-right: 1rem;
+
             .title {
-                font-size: 22px;
+                font-size: clamp(1rem, 1.8vw, 1.3rem);
                 font-weight: bold;
-                margin-bottom: 5px;
+                margin: 0 0 5px;
+                text-shadow: 0 0 12px rgba(192, 132, 252, 0.3);
             }
-    
+
             .description {
-                font-size: 15px;
-                opacity: 0.4;
+                font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+                opacity: 0.45;
                 margin-bottom: 8px;
             }
-    
+
             .skills {
                 display: flex;
-                gap: 10px;
+                gap: 8px;
                 flex-wrap: wrap;
-    
+
                 .skill {
-                    font-size: 14px;
-                    padding: 5px 12px;
-                    border: 2px solid #00e676; 
+                    font-size: clamp(11px, 1vw, 13px);
+                    padding: 4px 10px;
+                    border: 2px solid #9333EA;
                     border-radius: 10px;
-                    background: rgba(0, 230, 118, 0.1); 
-                    color: #c0c0c0;
+                    background: rgba(147, 51, 234, 0.12);
+                    color: #C084FC;
                     font-weight: bold;
                     transition: all 0.3s ease-in-out;
-                }
-    
-                .skill:hover {
-                    background: #004e28;
-                    color: rgb(255, 255, 255);
+
+                    &:hover {
+                        background: #4C1D95;
+                        color: #fff;
+                    }
                 }
             }
         }
-
-    }
-    
-    .internship-box:hover {
-        //background: radial-gradient( rgba(0, 235, 94, 0.4) 30%, rgba(255,255,255,0) 80%);
-        opacity:0.9;//making the box be darker when hovered
-        transform: scale(1.03);//the scaling for touch
-        border-radius: 20px; 
     }
 
-    .internship-box:before {//adding a before effect 
-        content: "";//adding a before and after click effect
+    .internship-box:before {
+        content: "";
         position: absolute;
-        top: 0;
-        left: 0;//keeping it aligned with the buttons
-        width: 100%;
-        height: 100%;
-        background:  rgba(100, 100, 100, 0.4);
-        opacity: 0.4;//keeping the gradience there before click 
-        transition: opacity 1s ease-in-out;
-        border-radius: 20px; 
+        inset: 0;
+        background: rgba(76, 29, 149, 0.15);
+        transition: background 0.3s ease-in-out;
+        border-radius: 20px;
+        pointer-events: none;
+    }
+
+    .internship-box:hover {
+        opacity: 0.9;
+        transform: scale(1.02);
+        box-shadow: 0 0 24px rgba(147, 51, 234, 0.3);
+    }
+}
+
+/* ════════════════════
+   TABLET  ≤ 900px
+   ════════════════════ */
+@media (max-width: 900px) {
+    .internship .internship-box {
+        height: auto;
+        min-height: 100px;
+
+        img { width: 25%; height: 100px; }
+        .overlay { left: 28%; }
+    }
+}
+
+/* ════════════════════
+   MOBILE  ≤ 600px
+   ════════════════════ */
+@media (max-width: 600px) {
+    .internship {
+        padding: 0 4% 5%;
+
+        .internship-box {
+            height: auto;
+            display: flex;
+            flex-direction: column;
+
+            &::before { display: none; }
+
+            img {
+                float: none;
+                width: 100%;
+                height: 130px;
+                border-radius: 10px 10px 0 0;
+            }
+
+            .overlay {
+                position: static;
+                transform: none;
+                left: unset;
+                top: unset;
+                padding: 0.75rem 1rem 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+
+                .title { margin-top: 0; }
+            }
+        }
     }
 }

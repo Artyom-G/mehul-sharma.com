@@ -7,80 +7,64 @@ import { useNavigate } from "react-router-dom";
 // Import the component's SCSS styles
 import './NavBar.scss';
 
-// Define an array `data` containing navigation links (Home & About)
+// Define an array `data` containing navigation links
 const data = [
-    {
-        label: 'Home', // Text that will appear on the button
-        to: '/'        // URL path for navigation
-    },
-    {
-        label: 'Project',
-        to: '/Project'
-    },
-
-    {
-        label: 'Internship',
-        to: '/Internship'
-    },
-
-    {
-        label: 'Contact',
-        to: '/Contact'
-    }
-]
+    { label: 'Home',        to: '/'          },
+    { label: 'Project',     to: '/Project'   },
+    { label: 'Internship',  to: '/Internship' },
+    { label: 'Contact',     to: '/Contact'   },
+];
 
 // Define the NavBar functional component
 const NavBar = () => {
 
-    // State to manage the toggle icon (currently unused in this component)
-    const [toggleIcon, setToggleIcon] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
-    // Function to toggle the state (currently not affecting UI)
-    const handleToggleIcon = () => {
-        setToggleIcon(!toggleIcon);
-    }
-
-    // Get the navigate function from react-router-dom to programmatically change routes
     const navigate = useNavigate();
 
-    // Function to navigate to a specific page when a button is clicked
     const handleNavingateToPage = (link) => {
-        navigate(link); // Uses the `navigate` function to change the route
-    }
+        navigate(link);
+        setMenuOpen(false);
+    };
 
     return (
-        <nav className="navbar">  {/* Navigation wrapper with a CSS class */}
-            
-            {/* Button for "Home" - Clicking navigates to '/' */}
-            <button onClick={() => handleNavingateToPage(data[0].to)}>
-                <span className="navbar__button">
-                    {data[0].label} {/* Displays "HOME" */}
-                </span>
+        <>
+            {/* ── Desktop navbar ── */}
+            <nav className="navbar">
+                <button onClick={() => handleNavingateToPage(data[0].to)}>
+                    <span className="navbar__button">{data[0].label}</span>
+                </button>
+                <button onClick={() => handleNavingateToPage(data[1].to)}>
+                    <span className="navbar__button">{data[1].label}</span>
+                </button>
+                <button onClick={() => handleNavingateToPage(data[2].to)}>
+                    <span className="navbar__button">{data[2].label}</span>
+                </button>
+                <button onClick={() => handleNavingateToPage(data[3].to)}>
+                    <span className="navbar__button">{data[3].label}</span>
+                </button>
+            </nav>
+
+            {/* ── Hamburger (mobile only) ── */}
+            <button
+                className={`hamburger${menuOpen ? ' open' : ''}`}
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="Toggle navigation"
+            >
+                <span /><span /><span />
             </button>
 
-            {/* Button for "projects" - Clicking navigates to '/about' */}
-            <button onClick={() => handleNavingateToPage(data[1].to)}>
-                <span className="navbar__button">
-                    {data[1].label} {/* Displays "project" */}
-                </span>
-            </button>
-
-             {/* Button for "internships" - Clicking navigates to '/about' */}
-             <button onClick={() => handleNavingateToPage(data[2].to)}>
-                <span className="navbar__button">
-                    {data[2].label} {/* Displays "internship" */}
-                </span>
-            </button>
-
-             {/* Button for "Contact me" - Clicking navigates to '/about' */}
-             <button onClick={() => handleNavingateToPage(data[3].to)}>
-                <span className="navbar__button">
-                    {data[3].label} {/* Displays "contact me" */}
-                </span>
-            </button>
-        </nav>
-    )
-}
+            {/* ── Full-screen mobile menu ── */}
+            <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
+                {data.map((item) => (
+                    <button key={item.to} onClick={() => handleNavingateToPage(item.to)}>
+                        {item.label}
+                    </button>
+                ))}
+            </div>
+        </>
+    );
+};
 
 // Export NavBar to be used in other components
 export default NavBar;
