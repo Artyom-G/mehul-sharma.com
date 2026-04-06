@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import "./Internship.scss"
 import { useNavigate } from "react-router-dom";
 import image from './WLU-Hero.png';

@@ -17,9 +17,9 @@ export const Contact = () => {
                     <button className="send" type="submit">Send</button>
                 </form>  
                 <div className="pic">
-                    <img src={box1} onClick={() => window.location.href="https://www.linkedin.com/in/mehul-sharma-2ba737299/" }/>
-                    <img src={box1} onClick={() => window.location.href="https://www.linkedin.com/in/mehul-sharma-2ba737299/"}/>
-                </div> 
+                    <img src={box1} alt="LinkedIn" onClick={() => window.location.href="https://www.linkedin.com/in/mehul-sharma-2ba737299/" }/>
+                    <img src={box1} alt="GitHub" onClick={() => window.location.href="https://www.linkedin.com/in/mehul-sharma-2ba737299/"}/>
+                </div>
             </div>
         </div> 
     );

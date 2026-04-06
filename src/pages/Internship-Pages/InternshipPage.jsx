@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import InternshipData from "./Internship";
 //import "./ProjectsPage.scss"
@@ -33,7 +33,7 @@ export const InternshipPage = () => {
             </div>
             <h4 className="description-title"> Description:</h4>
             <div className="description-body">{project.description}</div>
-            <iframe className="link" src={project.link}></iframe>
+            <iframe className="link" src={project.link} title={project.name}></iframe>
         </div>
     </div>
     )

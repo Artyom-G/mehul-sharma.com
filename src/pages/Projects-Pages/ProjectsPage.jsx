@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { useParams } from "react-router-dom";
 import projectData from "./ProjectData";
 import "./ProjectsPage.scss"
@@ -40,7 +39,7 @@ export const ProjectsPage = () => {
                     {answer}<br /><br />
                 </div>
             ))}
-            <iframe className="link" src={project.link}></iframe>
+            <iframe className="link" src={project.link} title={project.name}></iframe>
         </div>
     </div>
     )
